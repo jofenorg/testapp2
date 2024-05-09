@@ -1,0 +1,12 @@
+version: 2
+mergeable:
+  - when: pull_request.*
+    validate:
+      - do: title
+        and:
+          - or:
+              - must_include:
+                  regex: 'feat:.+$'
+                  message: "Add your feature name"
+          - must_exclude:
+              regex: ^\[WIP\]
